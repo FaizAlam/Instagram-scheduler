@@ -17,11 +17,14 @@ app.config['SECRET_KEY'] = \
 # Bcrypt is set as default SECURITY_PASSWORD_HASH, which requires a salt
 # Generate a good salt using: secrets.SystemRandom().getrandbits(128)
 
+UPLOAD_FOLDER = '/static'
 app.config['SECURITY_PASSWORD_SALT'] = \
     os.environ.get("SECURITY_PASSWORD_SALT", '146585145368132386173505678016728509634')
 app.config['SECURITY_REGISTERABLE'] = True
 app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
-
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024 
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg']
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Setup Flask-Security
 user_datastore = SQLAlchemySessionUserDatastore(db_session, User, Role)
 security = Security(app, user_datastore)

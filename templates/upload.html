@@ -7,8 +7,8 @@
     <title>Upload | IG Scheduler</title>
 </head>
 <body>
-    <form>
-        <input type="file" name="image"/>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="images/*"/>
         <input type="submit" value="Upload"/>
     </form>
     
