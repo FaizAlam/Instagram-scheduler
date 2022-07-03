@@ -40,3 +40,4 @@ class User(Base, UserMixin):
     facebook_access_token = Column(String())
     instagram_user_id = Column(String())
     roles = relationship('Role', secondary='roles_users', back_populates="users")
+    images = relationship("InstagramImage", back_populates='user')

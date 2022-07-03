@@ -4,6 +4,7 @@ from flask_security import Security, current_user, auth_required, hash_password,
      SQLAlchemySessionUserDatastore
 from database import db_session, init_db
 from models import User, Role
+from views.upload import upload_pages
 
 # Create app
 app = Flask(__name__)
@@ -25,6 +26,7 @@ app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
 user_datastore = SQLAlchemySessionUserDatastore(db_session, User, Role)
 security = Security(app, user_datastore)
 
+app.register_blueprint(upload_pages)
 
 # Create a user to test with
 @app.before_first_request
